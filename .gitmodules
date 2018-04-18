@@ -1,0 +1,3 @@
+[submodule "paper-components"]
+	path = paper-components
+	url = ../Repositories/paper-components.git
