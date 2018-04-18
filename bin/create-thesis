@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+# First we link to the text that comprises each standalone
+# chapter. (Note: we assume that the bibliography in each chapter
+# is complete and don't try to add to it ourselves)
+
+PROJECTS=$HOME/Development/
+SYRTIS=$PROJECTS/Syrtis/versioned/Papers
+
+cd $PROJECT_DIR
+chapters=$PROJECT_DIR/chapters
+ln -s $PROJECTS/Xenoliths/versioned/Paper $chapters/02-xenoliths
+ln -s "$SYRTIS/Orientation Statistics" $chapters/03-statistics
+ln -s "$SYRTIS/Syrtis Major" $chapters/04-syrtis
+ln -s "$PROJECTS/Naukluft/versioned/Paper" $chapters/05-naukluft
+
+build="build"
+mkdir -p build
+
+source paper-components/defs.zsh
+
+for chapter in chapters/*; do
+  name=${chapter:t}
+  build=build/$name
+  mkdir -p $build
+
+  captions=$build/captions.md
+  cat $chapter/text/figure-captions.md \
+  | text-pipeline \
+  > $captions
+
+  for f in $chapter/collected $chapter/collected-figures; do
+    collect_dir=$f
+    [[ -d $f ]] && break
+  done
+
+  body=$build/body.tex
+
+  aggregate-text $chapter/text/chapters/*.md \
+  | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+  | mark-inline-figures \
+  | text-pipeline \
+  | figurator inline \
+    $chapter/text/includes.yaml \
+    --template-dir paper-components/includes \
+    --captions $captions \
+    --collect-dir $collect_dir \
+  > $body
+
+done
