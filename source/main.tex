@@ -1,0 +1,54 @@
+\documentclass[letterpaper,12pt]{report}
+\input{build/preamble.tex}
+\usepackage{chapterbib}
+
+\title{Regional structural geology\\ of Earth and Mars}
+\author{Daven P. Quinn}
+\date{}
+
+\titleformat{\chapter}{\Gotham\Large\bfseries}{\thechapter}{3em}{}
+
+\titleformat{\section}{\Gotham\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\Gotham\normalsize\bfseries}{\thesubsection}{3pt}{}
+\titleformat{\subsubsection}[runin]{\Gotham\small\bfseries}{\thesubsubsection}{3pt}{}[~~~~]
+%\renewcommand{\maketitlehooka}{\Gotham\Large\bfseries}
+
+\renewcommand{\Authfont}{\Gotham\large}
+\renewcommand{\Affilfont}{\Gotham\footnotesize}
+
+\setlength{\droptitle}{-40pt}
+\pretitle{\begin{flushleft}\Gotham\bfseries\Huge}
+\posttitle{\par\end{flushleft}\vskip 0.5em}
+
+\preauthor{\begin{flushleft}\Gotham\normalsize}
+\postauthor{\par\end{flushleft}}
+
+\predate{\vspace{-10pt}\begin{flushleft}\Gotham\normalsize}
+\postdate{\par\end{flushleft}\vspace{-10pt}}
+
+\renewcommand{\contentsname}{\Gotham{\bfseries{Contents}}}
+\renewcommand{\listfigurename}{}
+\renewcommand{\listtablename}{}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{arabic}
+
+\chapter*{Abstract}
+Abstract goes here...
+
+\chapter*{Acknowledgements}
+I want to thank...
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\include{02-xenoliths/body}
+\include{03-statistics/body}
+\include{04-syrtis/body}
+\include{05-naukluft/body}
+
+\end{document}

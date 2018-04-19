@@ -1,0 +1,93 @@
+#!/usr/bin/env zsh
+
+# https://stmorse.github.io/journal/Thesis-writeup.html
+
+# First we link to the text that comprises each standalone
+# chapter. (Note: we assume that the bibliography in each chapter
+# is complete and don't try to add to it ourselves)
+
+PROJECTS=$HOME/Development/
+SYRTIS=$PROJECTS/Syrtis/versioned/Papers
+
+cd $PROJECT_DIR
+chapters=$PROJECT_DIR/chapters
+ln -s $PROJECTS/Xenoliths/versioned/Paper $chapters/02-xenoliths
+ln -s "$SYRTIS/Orientation Statistics" $chapters/03-statistics
+ln -s "$SYRTIS/Syrtis Major" $chapters/04-syrtis
+ln -s "$PROJECTS/Naukluft/versioned/Paper" $chapters/05-naukluft
+
+build="build"
+mkdir -p build
+
+source paper-components/defs.zsh
+
+# First get chapter text into latex format
+for chapter in chapters/*; do
+  name=${chapter:t}
+  echo $name
+  build=build/$name
+  mkdir -p $build
+
+  captions=$build/captions.tex
+  cat $chapter/text/figure-captions.md \
+  | text-pipeline \
+  > $captions
+
+  for f in $chapter/collected $chapter/collected-figures; do
+    collect_dir=$f
+    [[ -d $f ]] && break
+  done
+
+  body=$build/body.tex
+
+  cat $chapter/text/thesis-block.tex > $body
+  echo "\\section*{Abstract}" >> $body
+
+  abstract=$build/abstract.tex
+  cat $chapter/text/abstract.md \
+  | text-pipeline \
+  >> $body
+
+  echo "\\\begin{spacing}{1.2}" >> $body
+  echo "\\\begin{linenumbers}" >> $body
+
+  aggregate-text $chapter/text/chapters/*.md \
+  | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+  | mark-inline-figures \
+  | text-pipeline \
+  | figurator inline \
+    $chapter/text/includes.yaml \
+    --template-dir $chapter/paper-components/includes \
+    --captions $captions \
+    --collect-dir $collect_dir \
+  >> $body
+
+  # Copy bibliography and add to same directory
+  cp $chapter/text/references.bib $build/references.bib
+
+  echo "\\end{linenumbers}" >> $body
+  echo "\\end{spacing}" >> $body
+  echo "\\\bibliographystyle{paper-components/agu-template/agufull08.bst}" >> $body
+  echo "\\\bibliography{${build}/references.bib}" >> $body
+
+  a=($chapter/text/appendices/*.md(N))
+  if [[ ${#a} ]]; then
+    echo "Processing appendices"
+    echo "\\clearpage" >> $body
+    echo "\\\begin{subappendices}" >> $body
+    aggregate-text ${a}  \
+    | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+    | mark-inline-figures \
+    | text-pipeline \
+    | figurator inline \
+      $chapter/text/includes.yaml \
+      --template-dir $chapter/paper-components/includes \
+      --captions $captions \
+      --collect-dir $collect_dir \
+    >> $body
+    echo "\\\end{subappendices}" >> $body
+  fi
+
+done
+
+
