@@ -55,7 +55,7 @@ often find it hard to replicate this middle-level component. For
 instance, global averaging by geochemical proxies is extremely powerful
 for understanding the large-scale evolution of the Earth, its
 continents, and its surface biogeochemical systems [e.g. @DePaolo1976b;
-@Paytan2004; @Rohrback2007; @Workman2005; @Halverson2010], and
+@Paytan2004; @Rohrbach2007; @Workman2005; @Halverson2010], and
 small-scale systems have been increasingly well understood [e.g. @Gansecki1998;
 @Bindeman2008], but regional contextualization
 necessarily relies on inference to from relatively limited sample sets

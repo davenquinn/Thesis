@@ -1,0 +1,41 @@
+#!/usr/bin/env zsh
+
+# Do intro and conclusion updates
+
+cd $PROJECT_DIR
+
+build="build/sections"
+mkdir -p $build
+
+source paper-components/defs.zsh
+
+cat text/abstract.md \
+| text-pipeline \
+> $build/abstract.tex
+
+cat text/acknowledgements.md \
+| text-pipeline \
+> $build/acknowledgements.tex
+
+cat text/introduction.md \
+| sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+| text-pipeline \
+> $build/introduction.tex
+
+cat text/conclusion.md \
+| sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+| text-pipeline \
+> $build/conclusion.tex
+
+#cp $BIBTEX_LIBRARY build/references.bib
+
+#for chapter in chapters/*; do
+  #name=${chapter:t}
+  #bibtex build/$name/body.aux
+#done
+
+#for chapter in text/*.md; do
+  #bibtex build/${chapter:t:r}.aux
+#done
+
+

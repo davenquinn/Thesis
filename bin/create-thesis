@@ -19,39 +19,21 @@ source paper-components/defs.zsh
 texfile=build/main.tex
 
 preamble="$build/preamble.tex"
-cp source/main.tex $texfile
+cp main.tex $texfile
 cat "paper-components/defs/preamble"/*.tex > $preamble
 cat chapters/03-statistics/text/math-defs.tex >> $preamble
-
-cat text/abstract.md \
-| text-pipeline \
-> build/abstract.tex
-
-cat text/acknowledgements.md \
-| text-pipeline \
-> build/acknowledgements.tex
-
-cat text/introduction.md \
-| sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
-| text-pipeline \
-> build/introduction.tex
-
-cat text/conclusion.md \
-| sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
-| text-pipeline \
-> build/conclusion.tex
 
 cp $BIBTEX_LIBRARY build/references.bib
 run-latex $texfile build/Daven-Quinn-thesis-draft.pdf
 
-for chapter in chapters/*; do
-  name=${chapter:t}
-  bibtex build/$name/body.aux
+#for chapter in chapters/*; do
+  #name=${chapter:t}
+  #bibtex build/$name/body.aux
+#done
+
+for chapter in build/sections/*.aux; do
+  bibtex $chapter
 done
 
-for chapter in text/*.md; do
-  bibtex build/${chapter:t:r}.aux
-done
-
-run-latex $texfile build/Daven-Quinn-thesis-draft.pdf
+#run-latex $texfile build/Daven-Quinn-thesis-draft.pdf
 

@@ -56,12 +56,12 @@ planet at the free surface? Extensive lava
 flows have been documented to cover much of the planet [e.g. @McEwen1999]
 and fill the northern plains of the planet to significant depth [@Pan2017].
 Extensive, middle-crustal mafic layers have been documented to be laterally
-regionally continuous, implying formation at the surface [@Ehlmann2015].
+regionally continuous [@Edwards2008], suggesting formation at the surface.
 Future work with exposures of the middle crust from orbit can use structural tools
 to evaluate layering styles in the Martian basement, to try to build a 3D structural picture of Mars.
 
 In Chapter 5, we document the re-mapping of the Zebra Nappe of the Naukluft Nappe Complex. We substantially
-simplifying the tectonic dynamics and stratigraphic architecture envisioned by previous workers [@KornMartin1959; @Hartnady1980].
+simplify the tectonic dynamics and stratigraphic architecture envisioned by previous workers [@KornMartin1959; @Hartnady1980].
 This project is a clear example of the augmented power of modern mapping studies supported by technologies
 such as satellite and UAV imagery, digital methods of data display, and modern tectonostratigraphic
 interpretive frameworks. The success of this project provides a clear endorsement of the continued relevance
