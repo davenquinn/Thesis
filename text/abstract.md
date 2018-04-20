@@ -1,3 +1,5 @@
+\chapter*{Abstract}
+
 This dissertation explores the structural context around several
 key environmental transitions on Earth and Mars which are expressed at continental margins.
 Regional mapping

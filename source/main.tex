@@ -36,19 +36,21 @@
 
 \pagenumbering{arabic}
 
-\chapter*{Abstract}
-Abstract goes here...
-
-\chapter*{Acknowledgements}
-I want to thank...
+\include{abstract}
+\include{acknowledgements}
 
 \tableofcontents
+\listof{plate}{Plate}
 \listoftables
 \listoffigures
 
-\include{02-xenoliths/body}
-\include{03-statistics/body}
-\include{04-syrtis/body}
-\include{05-naukluft/body}
+\include{introduction}
+
+%\include{02-xenoliths/body}
+%\include{03-statistics/body}
+%\include{04-syrtis/body}
+%\include{05-naukluft/body}
+
+\include{conclusion}
 
 \end{document}

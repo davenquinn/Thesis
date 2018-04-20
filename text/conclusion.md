@@ -1,4 +1,4 @@
-# Conclusion
+\chapter{Conclusion}
 
 Continental margins on Earth are the locations where the continents are added
 to by both sedimentary and tectonic accretion, forming first-order features
@@ -131,3 +131,7 @@ Pushing the boundaries of data visualization
 Traditional geologic tools: topo/physiographic maps, 
 Important to work on Mars
 -->
+
+\bibliographystyle{paper-components/agu-template/agufull08.bst}
+\bibliography{build/references.bib}
+

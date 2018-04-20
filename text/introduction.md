@@ -1,3 +1,4 @@
+\chapter{Introduction}
 
 Reading environmental markers from the geologic record is key to
 understanding the evolution of the Earth through time. Packages of rock
@@ -114,4 +115,6 @@ imperfectly by several generations of workers. Our study is a
 straightforward use of mapping and stratigraphy, eased by the
 introduction of new technology into the mapping process.
 
+\bibliographystyle{paper-components/agu-template/agufull08.bst}
+\bibliography{build/references.bib}
 

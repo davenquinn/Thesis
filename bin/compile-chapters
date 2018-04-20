@@ -48,7 +48,6 @@ for chapter in chapters/*; do
   | text-pipeline \
   >> $body
 
-  echo "\\\begin{spacing}{1.2}" >> $body
   echo "\\\begin{linenumbers}" >> $body
 
   aggregate-text $chapter/text/chapters/*.md \
@@ -66,7 +65,6 @@ for chapter in chapters/*; do
   cp $chapter/text/references.bib $build/references.bib
 
   echo "\\end{linenumbers}" >> $body
-  echo "\\end{spacing}" >> $body
   echo "\\\bibliographystyle{paper-components/agu-template/agufull08.bst}" >> $body
   echo "\\\bibliography{${build}/references.bib}" >> $body
 
