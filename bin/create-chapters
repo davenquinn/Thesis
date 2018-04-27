@@ -40,7 +40,14 @@ for chapter in chapters/*; do
 
   body=$build/body.tex
 
-  cat $chapter/text/thesis-block.tex > $body
+  cat source/redefine-commands.tex \
+  > $body
+
+  cat $chapter/text/title-block.tex \
+  >> $body
+
+  echo "" >> $body
+
   echo "\\section*{Abstract}" >> $body
 
   abstract=$build/abstract.tex
@@ -48,12 +55,13 @@ for chapter in chapters/*; do
   | text-pipeline \
   >> $body
 
+  echo "\\newpage" >> $body
   echo "\\\begin{linenumbers}" >> $body
 
   aggregate-text $chapter/text/chapters/*.md \
-  | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
   | mark-inline-figures \
   | text-pipeline \
+  | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
   | figurator inline \
     $chapter/text/includes.yaml \
     --template-dir $chapter/paper-components/includes \

@@ -1,12 +1,12 @@
 \documentclass[letterpaper,12pt]{report}
 \input{build/preamble.tex}
-\usepackage{chapterbib}
+\usepackage[sectionbib]{chapterbib}
 
 \title{Regional structural geology\\ of Earth and Mars}
 \author{Daven P. Quinn}
 \date{}
 
-\titleformat{\chapter}{\Gotham\Large\bfseries}{\thechapter}{3em}{}
+\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{3em}{}
 
 \titleformat{\section}{\Gotham\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\Gotham\normalsize\bfseries}{\thesubsection}{3pt}{}
@@ -30,26 +30,29 @@
 \renewcommand{\listfigurename}{}
 \renewcommand{\listtablename}{}
 
+%\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{}{2ex}
+
 \begin{document}
 
 \maketitle
 
 \pagenumbering{arabic}
 
-\include{sections/abstract}
 \include{sections/acknowledgements}
 
+\include{sections/abstract}
+
 \tableofcontents
-\listof{plate}{Plate}
+\listof{plate}{}
 \listoftables
 \listoffigures
 
 \include{sections/introduction}
 
-%\include{02-xenoliths/body}
-%\include{03-statistics/body}
-%\include{04-syrtis/body}
-%\include{05-naukluft/body}
+\include{02-xenoliths/body}
+\include{03-statistics/body}
+\include{04-syrtis/body}
+\include{05-naukluft/body}
 
 \include{sections/conclusion}
 

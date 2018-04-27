@@ -5,7 +5,7 @@ understanding the evolution of the Earth through time. Packages of rock
 provide a window into the systems and processes that operated throughout
 the past. Their properties capture information about their formation
 environment, and these vignettes can be used to test the applicability
-of mechanistic and theoretical frameworks for global change. Th
+of mechanistic and theoretical frameworks for global change.
 
 There are two major aspects of this approach that must be unified.
 First, detailed observations of key features of the geologic system must

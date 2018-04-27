@@ -1,0 +1,8 @@
+
+\renewcommand{\title}[1]{\chapter{#1}}
+\renewcommand{\author}[2][]{{\Gotham\large{#2$^{#1}$}~~}}
+
+\renewcommand{\affil}[2][]{\noindent$^{#1}$~~#2 \\}
+
+\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+
