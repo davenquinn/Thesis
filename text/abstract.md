@@ -9,7 +9,7 @@ modeling. Four research projects are presented: Chapter 2 explores the tectonic
 context of xenoliths beneath the western margin of North America and
 illuminates the structural history of the lithospheric underpinnings of the
 California coast. In Chapter 3, we undertake a structural study of the southern
-Naukluft Mountains, and re-interpret its tectonic context and age. Chapter
+Naukluft Mountains, Namibia, and re-interpret its tectonic context and age. Chapter
 4 builds a new method for applying statistical error bars to remotely measured
 planar orientations, and Chapter 5 applies this method to mapping the 3D
 structure of a globally significant stratigraphy on Mars. We find a long

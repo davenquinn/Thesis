@@ -26,111 +26,109 @@ others in specific locales of the southern Sierra Nevada and Coast Ranges.
 However, this mode of addition at the base a continent has not been so well
 documented before.
 
-<!--This study also raises questions about one major episode, the slab
-window, that has impacts for the -->
+In Chapter 3, we document the re-mapping of the Zebra Nappe of the Naukluft
+Nappe Complex (NNC). We substantially simplify the tectonic dynamics and
+stratigraphic architecture envisioned by previous workers [@KornMartin1959;
+@Hartnady1980]. This project is a clear example of the augmented power of
+modern mapping studies supported by technologies such as satellite and UAV
+imagery, digital methods of data display, and modern tectonostratigraphic
+interpretive frameworks. The success of this project provides a clear
+endorsement of the continued relevance of mapping-based geologic studies and
+the desirability of replicating techniques for extracting regional meaning from
+datasets in contexts with less ideal data availability.
 
-In Chapters 3 and 4, we apply structural mapping techniques to a stratigraphy on Mars.
-Chapter 3 represents our most significant attempt to improve the toolset available for
-structural mapping with remote-sensing data, and we create a method that allows significant improvement in the
-amount of bedding-orientation information that can be extracted given a remotely-sensed dataset.
-This slightly improves options for working in spite of the scale gap between orbital
-and landed data that is inherent to Mars geology.
+In Chapters 4 and 5, we apply structural mapping techniques to a stratigraphy
+on Mars. Chapter 4 improves the
+toolset available for structural mapping with remote-sensing data: we
+create a statistical method that allows significant improvement in the amount of
+bedding-orientation information that can be extracted from a remotely-sensed
+dataset. This method is coupled with new visualization approaches and software
+pipelines that provide new ways to work with structural data collected remotely.
+This method is valuable for planetary science, but also in terrestrial studies
+using unmanned aerial vehicles and structure-from-motion techniques.
 
-In Chapter 4, we apply the methodology constructed in Chapter 3 to a globally significant stratigraphy
-at NE Syrtis Major,
-discovering that it records a varied and multistage history of sedimentary deposition
-from the Noachian into the Amazonian. The basic sedimentary substrate of the
-sequence mapped and described in this chapter was likely formed by deep basinal deposition at the
-margin of Isidis Basin; the architecture of a bounding basin required to contain such deposition
-is unclear, but may either be unconfined (i.e. an ocean) or confined by a previously-existing ice
-sheet in Isidis Basin [@Soucek2015]. We construct a geologic map based on a much more
-thorough characterization of units and their geologic meaning than current morphologic mapping
-studies [@Bramble2017].
+In Chapter 5, we apply the methodology constructed in Chapter 4 to map and
+describe a globally significant stratigraphy at northeast Syrtis Major. We discover
+that the sequence records a varied and multistage history of sedimentary
+deposition from the Noachian into the Amazonian. The layered sulfates that
+anchor this sequence were likely formed by deep basinal deposition at the
+margin of Isidis Basin. The architecture of a bounding basin required to
+contain such deposition is unclear, but may either be unconfined (i.e. an
+ocean) or confined by a previously-existing ice sheet in Isidis Basin
+[@Soucek2015]. We construct a geologic map based on a much more thorough
+characterization of units and their geologic meaning than current morphologic
+mapping studies [@Bramble2017].
 
-Linking our examinations of the geologic history to that of the deep lithosphere of Earth,
-we observe that on Mars, the structure of the deep crust and  the processes by which it
-was formed remain fundamentally unknown. Was it created during planetary formation and
-subsequent bombardment during solar system formation and mostly altered in place?
-Or was there an early intense epoch of resurfacing or "gardening" of the
-planet at the free surface? Extensive lava
-flows have been documented to cover much of the planet [e.g. @McEwen1999]
-and fill the northern plains of the planet to significant depth [@Pan2017].
-Extensive, middle-crustal mafic layers have been documented to be laterally
-regionally continuous [@Edwards2008], suggesting formation at the surface.
-Future work with exposures of the middle crust from orbit can use structural tools
-to evaluate layering styles in the Martian basement, to try to build a 3D structural picture of Mars.
+This dissertation has demonstrated the application of structural geologic methods
+to regional systems on Earth, in one case using stratigraphy and
+structural mapping, and in another using geochemistry and modeling. Additionally,
+we cover the extension of these methods to Mars science, building tools and
+describing the environmental signals contained in a key stratigraphy.
+These studies illuminate several directions of future study in Earth and Mars science.
 
-In Chapter 5, we document the re-mapping of the Zebra Nappe of the Naukluft Nappe Complex. We substantially
-simplify the tectonic dynamics and stratigraphic architecture envisioned by previous workers [@KornMartin1959; @Hartnady1980].
-This project is a clear example of the augmented power of modern mapping studies supported by technologies
-such as satellite and UAV imagery, digital methods of data display, and modern tectonostratigraphic
-interpretive frameworks. The success of this project provides a clear endorsement of the continued relevance
-of mapping-based geologic studies and the desirability of replicating techniques for extracting regional meaning from datasets in contexts with less ideal data availability.
+Our terrestrial study of the deep lithosphere in Chapter 2 was enabled by
+geologic mapping of crustal-level exposures throughout California, seismic
+data, tectonic reconstructions, and geophysical modeling. This integrated
+approach led to a to a new conceptual framework for understanding the "slab
+window" beneath the California coast and Mojave Plateau. How does this new
+understanding  relate to the geology and petrology of Miocene volcanism in the
+region? Testing against this refined framework will improve our process-based
+understanding of the formation and tectonic modification of the coast of North
+America.
 
-<!--
+Chapter 2 also suggests new avenues for Mars science.
+On Mars, the structure of the deep lithosphere and the processes by which it
+formed remain fundamentally unknown. Was the lithosphere created during planetary formation
+and mostly altered in place? Or was there an early epoch of resurfacing of the
+planet? Extensive lava flows have been documented to cover
+much of the planet [e.g. @McEwen1999] and to fill the northern plains of the
+planet to significant depth [@Pan2017]. Regionally extensive, laterally continuous
+middle-crustal mafic layers suggest formation at the surface [@Edwards2008]. Still, studies of surface--interior
+coupling are based on poorly constrained compositional models [e.g. @Wade2017].
+New geophysical data \[e.g. from the InSIGHT mission, @Banerdt2013\] will substantially
+improve this situation, and mapping middle crustal exposures from orbit using
+structural tools developed in this dissertation can build complementary constraints.
+These new tools will ultimately lead to a new understanding of the deep structure of Mars.
 
-The
-extent of this occurrence is debated, with some propositions implying a 
+In Chapter 3, our study of the Zebra Nappe of the NNC is the first detailed
+description of a thick passive-margin stratigraphy on the Kalahari Craton. This
+sedimentary sequence contains environmental proxies relevant to Neoproterozoic
+Earth history and builds out a tectonic sequence of events that can be used to
+test the history of the Damara orogen and Pan-African assembly of Gondwana
+[e.g. @Gray2008]. There are several more nappe units in the NNC, and future
+study will continue to place nappe segments in age context, building a new
+record of Neoproterozoic Earth history that can be compared to existing
+systems. Late-Neoproterozoic Earth is understood from relatively few stratigraphies,
+and new proxies from the NNC will provide data to assess regional variability
+and potential drivers for the evolution of animal life on Earth.
 
+Where the NNC represents a set of fragmentary windows in the Neoproterozoic
+stratigraphy and the paleoenvironment of Earth during the Cryogenian --
+Ediacaran periods, Northeast Syrtis Major on Mars represents an in-place,
+relatively complete record of early Mars history, analogous to Neoproterozoic
+reference sections in northern Namibia [@Hoffmann1996; @Hoffman1998] and Death
+Valley, California [e.g. @Corsetti2005a; @Petterson2011]. We hope that Chapter
+5 of this dissertation will serve as a similar guide to the history of the Mars
+surface environment over a period of global change. However, many
+more fragmentary records of Mars surface geological history exist. These
+sometimes capture higher levels of detail than the Syrtis Major stratigraphy, as
+with delta deposits and their context at Aeolis Dorsa [@DiBiase2013;
+@Kite2015]. Other areas capture regionally-differentiated systems, such as at
+Uzboi Vallis [@Grant2011] or Gale Crater [e.g. @Milliken2010]. Further
+understanding of Mars history can put the environments captured by of these
+regions in the context of the Noachian--Amazonian history recorded at Northeast
+Syrtis. As in Earth science, such an approach allows the best chance of capturing
+regional variation and a detailed, time-ordered history of the Mars environment.
 
-An ocean on Mars
-
-- Sedimentary records suggest deep basinal deposition
-- This is at odds with other research suggesting a paucity of evaporitic sediments
-- Understanding the fluxes and chemical composition of this potential body of water is crucial
-
-Continental-margin sedimentation
-
-Why were the fragments at Syrtis preserved?
-
-Mantle (and crustal-root) effects on sedimentation 
-
-Underplating of oceanic crust in the Cretaceous, and Neogene delamination of an arc crustal root, has played a huge role in the crustal structure of the Cordillera.
-
-Within the western Cordillera, we have documented better than almost any place on Earth that underplating and delamination are responsible for major topographic gradients.
-
-Isostatic effects proved important in where basins developed, vs. mountain ranges.
-
-This can be extended to Mars. Now that we have discovered large sedimentary deposits at the edge of basins (in some cases perched at high elevations such as on the margin of the Valles Marineris system), we can try to use them to infer sedimentary history. To what extent do modern elevations and long-wavelength topographic relationships retain fidelity from Noachian Mars? When did the “Tharsis bulge” develop?
-
-This is of crucial importance to basin analysis going forward, and understanding of the possible extent of a potential ocean
-
-
-<!--
-
-Understanding the structure of the
-continental margins and the sediments that overtop them, as well as the
-potential interplay between tectonic and sedimentary processes, is a crucial
-aspect of understanding a planetary system.
-
-## Regional-scale geologic mapping
-
-
-## Extending approaches to regional geologic studies
-
-There is a long and rich history of regional geological studies on Earth,
-starting from the first conceptions of Earth history by mapping of
-successive stratigraphic sequences. Geological studies are
-tied to geologic maps as a fundamental mode of display. Geologic maps serve
-as a medium to both display basic data (the location and stacking patterns of
-rock units) and to convey interpretations and synthesis of this data. Truly
-integrated geological mapping studies draw on localized information from
-a wide spectrum of geological methods that can provide info on the regional
-setting, and reflect a high-level interpretation and synthesis of this work.
-
-As the future of Mars exploration moves from a crater-interior
-[@Grotzinger2013; @Grotzinger2015] to a
-basin-margin depositional setting, the 
-
-
-Here, we have made efforts
-to fully explore the exercise of geological mapping
-
-Pushing the boundaries of data visualization
-
-Traditional geologic tools: topo/physiographic maps, 
-Important to work on Mars
--->
+The methods developed in Chapter 4 were created to enable Chapter 5 but are broadly
+applicable to terrestrial and planetary geoscience, and potentially to surface-fitting and remote-sensing
+applications in other domains. The developed method relies on both detailed statistics
+and new visualization approaches, and its supporting software provides a user interface to easily
+interact with the statistical tools. Such integrated approaches with
+custom data pipelines and user interfaces are becoming increasingly valuable for the capture
+and distillation of complex data in the geosciences. So too are rigorous standards for data
+archival and reporting. Moving forward, similarly deep analyses of the structure of data will be crucial for
+methods development across the geosciences.
 
 \bibliographystyle{paper-components/agu-template/agufull08.bst}
 \bibliography{build/references.bib}

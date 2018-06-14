@@ -21,7 +21,7 @@ texfile=build/main.tex
 preamble="$build/preamble.tex"
 cp main.tex $texfile
 cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
-cat chapters/03-statistics/text/math-defs.tex >> $preamble
+cat chapters/04-statistics/text/math-defs.tex >> $preamble
 
 bin/create-sections
 

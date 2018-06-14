@@ -12,9 +12,9 @@ SYRTIS=$PROJECTS/Syrtis/versioned/Papers
 cd $PROJECT_DIR
 chapters=$PROJECT_DIR/chapters
 ln -s $PROJECTS/Xenoliths/versioned/Paper $chapters/02-xenoliths
-ln -s "$SYRTIS/Orientation Statistics" $chapters/03-statistics
-ln -s "$SYRTIS/Syrtis Major" $chapters/04-syrtis
-ln -s "$PROJECTS/Naukluft/versioned/Paper" $chapters/05-naukluft
+ln -s "$SYRTIS/Orientation Statistics" $chapters/04-statistics
+ln -s "$SYRTIS/Syrtis Major" $chapters/05-syrtis
+ln -s "$PROJECTS/Naukluft/versioned/Paper" $chapters/03-naukluft
 
 build="build"
 mkdir -p build
