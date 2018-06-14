@@ -27,8 +27,8 @@
 \postdate{\par\end{flushleft}\vspace{-10pt}}
 
 \renewcommand{\contentsname}{\Gotham{\bfseries{Contents}}}
-\renewcommand{\listfigurename}{}
-\renewcommand{\listtablename}{}
+\renewcommand{\listfigurename}{\Gotham\normalsize{Figures}}
+\renewcommand{\listtablename}{\Gotham\normalsize{Tables}}
 
 %\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{}{2ex}
 
@@ -43,16 +43,16 @@
 \include{sections/abstract}
 
 \tableofcontents
-\listof{plate}{}
+\listof{plate}{\normalsize{Plates}}
 \listoftables
 \listoffigures
 
 \include{sections/introduction}
 
 \include{02-xenoliths/body}
-\include{03-statistics/body}
-\include{04-syrtis/body}
-\include{05-naukluft/body}
+\include{03-naukluft/body}
+\include{04-statistics/body}
+\include{05-syrtis/body}
 
 \include{sections/conclusion}
 

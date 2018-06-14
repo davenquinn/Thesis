@@ -55,8 +55,8 @@ for chapter in chapters/*; do
   | text-pipeline \
   >> $body
 
-  echo "\\newpage" >> $body
-  echo "\\\begin{linenumbers}" >> $body
+  echo "\\\newpage" >> $body
+  #echo "\\\begin{linenumbers}" >> $body
 
   aggregate-text $chapter/text/chapters/*.md \
   | mark-inline-figures \
@@ -64,7 +64,7 @@ for chapter in chapters/*; do
   | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
   | figurator inline \
     $chapter/text/includes.yaml \
-    --template-dir $chapter/paper-components/includes \
+    --template-dir paper-components/includes \
     --captions $captions \
     --collect-dir $collect_dir \
   >> $body
@@ -72,14 +72,19 @@ for chapter in chapters/*; do
   # Copy bibliography and add to same directory
   cp $chapter/text/references.bib $build/references.bib
 
-  echo "\\end{linenumbers}" >> $body
+  #echo "\\end{linenumbers}" >> $body
+  echo "" >> $body
   echo "\\\bibliographystyle{paper-components/agu-template/agufull08.bst}" >> $body
   echo "\\\bibliography{${build}/references.bib}" >> $body
+  echo "" >> $body
 
   a=($chapter/text/appendices/*.md(N))
   if [[ ${#a} ]]; then
     echo "Processing appendices"
-    echo "\\clearpage" >> $body
+
+    echo "\\\newpage" >> $body
+    echo '' >> $body
+
     echo "\\\begin{subappendices}" >> $body
     aggregate-text ${a}  \
     | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
