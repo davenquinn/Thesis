@@ -1,49 +1,45 @@
-\documentclass[letterpaper,12pt]{report}
+\documentclass{caltech_thesis}
 \input{build/preamble.tex}
 \usepackage[sectionbib]{chapterbib}
 
 \title{Regional structural geology\\ of Earth and Mars}
 \author{Daven P. Quinn}
-\date{}
 
-\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{3em}{}
+\degreeaward{PhD}                 % Degree to be awarded
+\university{California Institute of Technology}    % Institution name
+\address{Pasadena, California}                     % Institution address
+\unilogo{build/caltech.png}                                 % Institution logo
+\copyyear{2018}  % Year (of graduation) on diploma
+\defenddate{May 2, 2018}          % Date of defense
+
+\orcid{0000-0003-1895-3742}
+
+%% IMPORTANT: Select ONE of the rights statement below.
+\rightsstatement{All rights reserved}
+
+\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\Large\thechapter}{2em}{}
 
 \titleformat{\section}{\Gotham\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\Gotham\normalsize\bfseries}{\thesubsection}{3pt}{}
 \titleformat{\subsubsection}[runin]{\Gotham\small\bfseries}{\thesubsubsection}{3pt}{}[~~~~]
-%\renewcommand{\maketitlehooka}{\Gotham\Large\bfseries}
-
-\renewcommand{\Authfont}{\Gotham\large}
-\renewcommand{\Affilfont}{\Gotham\footnotesize}
-
-\setlength{\droptitle}{-40pt}
-\pretitle{\begin{flushleft}\Gotham\bfseries\Huge}
-\posttitle{\par\end{flushleft}\vskip 0.5em}
-
-\preauthor{\begin{flushleft}\Gotham\normalsize}
-\postauthor{\par\end{flushleft}}
-
-\predate{\vspace{-10pt}\begin{flushleft}\Gotham\normalsize}
-\postdate{\par\end{flushleft}\vspace{-10pt}}
 
 \renewcommand{\contentsname}{\Gotham{\bfseries{Contents}}}
-\renewcommand{\listfigurename}{\Gotham\normalsize{Figures}}
-\renewcommand{\listtablename}{\Gotham\normalsize{Tables}}
-
+\renewcommand{\listfigurename}{\Gotham\Large{Figures}}
+\renewcommand{\listtablename}{\Gotham\Large{Tables}}
 %\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{}{2ex}
 
 \begin{document}
 
 \maketitle
 
-\pagenumbering{arabic}
+\begin{spacing}{1.4}
 
 \include{sections/acknowledgements}
 
 \include{sections/abstract}
 
 \tableofcontents
-\listof{plate}{\normalsize{Plates}}
+\listof{plate}{\Large{Plates}}
 \listoftables
 \listoffigures
 
@@ -55,5 +51,7 @@
 \include{05-syrtis/body}
 
 \include{sections/conclusion}
+
+\end{spacing}
 
 \end{document}

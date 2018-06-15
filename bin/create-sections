@@ -27,7 +27,7 @@ cat text/conclusion.md \
 | text-pipeline \
 > $build/conclusion.tex
 
-#cp $BIBTEX_LIBRARY build/references.bib
+cp $BIBTEX_LIBRARY build/references.bib
 
 #for chapter in chapters/*; do
   #name=${chapter:t}

@@ -59,7 +59,7 @@ ocean) or confined by a previously-existing ice sheet in Isidis Basin
 characterization of units and their geologic meaning than current morphologic
 mapping studies [@Bramble2017].
 
-This dissertation has demonstrated the application of structural geologic methods
+This thesis has demonstrated the application of structural geologic methods
 to regional systems on Earth, in one case using stratigraphy and
 structural mapping, and in another using geochemistry and modeling. Additionally,
 we cover the extension of these methods to Mars science, building tools and
@@ -87,7 +87,7 @@ middle-crustal mafic layers suggest formation at the surface [@Edwards2008]. Sti
 coupling are based on poorly constrained compositional models [e.g. @Wade2017].
 New geophysical data \[e.g. from the InSIGHT mission, @Banerdt2013\] will substantially
 improve this situation, and mapping middle crustal exposures from orbit using
-structural tools developed in this dissertation can build complementary constraints.
+structural tools developed in this thesis can build complementary constraints.
 These new tools will ultimately lead to a new understanding of the deep structure of Mars.
 
 In Chapter 3, our study of the Zebra Nappe of the NNC is the first detailed
@@ -108,7 +108,7 @@ Ediacaran periods, Northeast Syrtis Major on Mars represents an in-place,
 relatively complete record of early Mars history, analogous to Neoproterozoic
 reference sections in northern Namibia [@Hoffmann1996; @Hoffman1998] and Death
 Valley, California [e.g. @Corsetti2005a; @Petterson2011]. We hope that Chapter
-5 of this dissertation will serve as a similar guide to the history of the Mars
+5 of this thesis will serve as a similar guide to the history of the Mars
 surface environment over a period of global change. However, many
 more fragmentary records of Mars surface geological history exist. These
 sometimes capture higher levels of detail than the Syrtis Major stratigraphy, as
@@ -130,6 +130,7 @@ and distillation of complex data in the geosciences. So too are rigorous standar
 archival and reporting. Moving forward, similarly deep analyses of the structure of data will be crucial for
 methods development across the geosciences.
 
+\begin{spacing}{1}
 \bibliographystyle{paper-components/agu-template/agufull08.bst}
 \bibliography{build/references.bib}
-
+\end{spacing}

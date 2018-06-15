@@ -1,3 +1,6 @@
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
 \chapter{Introduction}
 
 Reading environmental markers from the geologic record is key to
@@ -82,7 +85,7 @@ necessarily involve modeling [@Tosca2006; @Andrews-Hanna2007] or detailed geolog
 
 # Differently scaled explorations of continental margins
 
-This dissertation consists of several projects that explore different
+This thesis consists of several projects that explore different
 parts of this conceptual space and try to bridge the scale gap
 through the application of new methodologies. Within this overarching framework,
 the investigations here are aligned by their examination of the
@@ -95,8 +98,8 @@ provide a setting for the formation and preservation of stratigraphies that
 record the surface environment at key time periods in planetary evolution.
 
 On Earth, continents are formed by tectonic processes, and continental
-edges are the locus of this construction. Chapter 2 of this
-dissertation describes the process of construction of the continental margin
+edges are the locus of this construction. Chapter 2 of this thesis
+describes the process of construction of the continental margin
 terrane of coastal central California.
 This study uses investigation of mantle-sourced xenolith samples
 to estimate the structure
@@ -115,7 +118,7 @@ the margin of the Kalahari Craton. This study is a straightforward application
 of geologic mapping and stratigraphy, eased by the introduction of new
 technology into the mapping process.
 
-The remainder of this dissertation deals with the structural assessment of
+The remainder of this thesis deals with the structural assessment of
 paleoenvironmentally important stratigraphies on Mars. Reconstruction of
 depositional environments from Martian sedimentary rocks is limited by the
 accuracy of bedding orientation measurements. Chapter 4 explores the difficulty
@@ -127,6 +130,7 @@ early in Mars' history, in order to infer the surface environmental progression
 within the region. We find evidence for episodes of regional inundation and
 erosion spanning much of Mars history, from the Noachian to Early Amazonian.
 
+\begin{spacing}{1}
 \bibliographystyle{paper-components/agu-template/agufull08.bst}
 \bibliography{build/references.bib}
-
+\end{spacing}

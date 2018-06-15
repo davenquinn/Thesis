@@ -1,8 +1,8 @@
 \chapter*{Acknowledgements}
 
 I have had the good fortune to work with several outstanding advisors
-over the course of my PhD here at Caltech.
-First and foremost, I am thrilled to have worked with Bethany, all the
+over the course of my PhD at Caltech.
+First and foremost, I am thrilled to have worked with Bethany Ehlmann, all the
 more so as one of her first batch of students. Bethany's focus and clear-eyed
 vision allowed us to tackle some really big projects, and her commitment to
 getting it right encouraged careful and methodical work. I am glad that she
@@ -11,11 +11,10 @@ me into a confident field geologist, and his willingness to embark on an
 exploratory project with a total sedimentary-rock neophyte led to a truly
 classic mapping study. Finally,
 Jason Saleeby helped me appreciate the true complexity of tectonics with his
-intersectional style in the field and in the classroom. All three advisors
-taught me to integrate detailed data into a regional
-picture, each in a different swathe of the geological sciences.
-The result is a variety of models of scientific outlook and
-practice to draw from in my work moving forward. Thanks for
+intersectional style in the field and in research. Having advisors in
+three different swathes of the geological sciences gave me a variety of
+models of scientific outlook and
+practice to draw from in my work, and I am the richer for it. Thanks for
 giving me the opportunity to do so much, and the tools to succeed.
 
 Many others on the faculty and staff have contributed greatly to my PhD. From

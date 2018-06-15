@@ -19,8 +19,8 @@ source paper-components/defs.zsh
 texfile=build/main.tex
 
 preamble="$build/preamble.tex"
+cp thesis-template/* build
 cp main.tex $texfile
-cp thesis-template/caltech_thesis.cls build/caltech_thesis.cls
 cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
 cat chapters/04-statistics/text/math-defs.tex >> $preamble
 

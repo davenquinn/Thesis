@@ -43,6 +43,8 @@ for chapter in chapters/*; do
   cat source/redefine-commands.tex \
   > $body
 
+  echo "\\\begin{spacing}{1}" >> $body
+
   cat $chapter/text/title-block.tex \
   >> $body
 
@@ -55,8 +57,11 @@ for chapter in chapters/*; do
   | text-pipeline \
   >> $body
 
+  echo "\\\end{spacing}" >> $body
+
+
   echo "\\\newpage" >> $body
-  #echo "\\\begin{linenumbers}" >> $body
+  echo "" >> $body
 
   aggregate-text $chapter/text/chapters/*.md \
   | mark-inline-figures \
@@ -72,10 +77,11 @@ for chapter in chapters/*; do
   # Copy bibliography and add to same directory
   cp $chapter/text/references.bib $build/references.bib
 
-  #echo "\\end{linenumbers}" >> $body
   echo "" >> $body
+  echo "\\\begin{spacing}{1}" >> $body
   echo "\\\bibliographystyle{paper-components/agu-template/agufull08.bst}" >> $body
   echo "\\\bibliography{${build}/references.bib}" >> $body
+  echo "\\\end{spacing}" >> $body
   echo "" >> $body
 
   a=($chapter/text/appendices/*.md(N))
@@ -86,6 +92,7 @@ for chapter in chapters/*; do
     echo '' >> $body
 
     echo "\\\begin{subappendices}" >> $body
+    echo "" >> $body
     aggregate-text ${a}  \
     | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
     | mark-inline-figures \
