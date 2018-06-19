@@ -60,7 +60,6 @@ for chapter in chapters/*; do
     }
     _hash=$(directory-hash $chapter)
   fi
-  echo $_hash
   if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
     echo "No changes"
     continue
