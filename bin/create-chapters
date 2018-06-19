@@ -21,48 +21,53 @@ mkdir -p build
 
 source paper-components/defs.zsh
 
+G="\e[32m"
+N="\e[0m"
+P="\e[0;34m"
+
 # First get chapter text into latex format
 for chapter in chapters/*; do
+  [[ ! -d $chapter ]] && continue
   name=${chapter:t}
-  echo $name
+  echo "\n\e[1;92m"$name$N
+
   build=build/$name
+  includes=$build/includes
+  # Appendices
+  appendices=($chapter/text/appendices/*.md(N))
+
   mkdir -p $build
 
+  eval include_dir="$(cat chapters/include-directories.json | jq ".[\"$name\"]")"
+
+  if [[ -d $include_dir ]]; then
+    echo "Copying figures from $G$include_dir$N"
+    rsync -a --delete $include_dir/ $includes
+  else
+    echo "Could not find include directory \e[0;31m$include_dir$N"
+  fi
+
+  echo $P"...building template$N"
+  cp source/chapter-template.tex "$build/main.tex"
+  [[ ${#appendices} ]] && cat source/appendices-shim.tex >> $build/main.tex
+  # Replace template variables
+  sed -i 's|\\$build|'"$build"'|' $build/main.tex
+
+  echo $P"...copying title block and references$N"
+  cp $chapter/text/title-block.tex $chapter/text/references.bib $build
+
+  echo $P"...building figure captions$N"
   captions=$build/captions.tex
   cat $chapter/text/figure-captions.md \
   | text-pipeline \
   > $captions
 
-  for f in $chapter/collected $chapter/collected-figures; do
-    collect_dir=$f
-    [[ -d $f ]] && break
-  done
-
-  body=$build/body.tex
-
-  cat source/redefine-commands.tex \
-  > $body
-
-  echo "\\\begin{spacing}{1}" >> $body
-
-  cat $chapter/text/title-block.tex \
-  >> $body
-
-  echo "" >> $body
-
-  echo "\\section*{Abstract}" >> $body
-
-  abstract=$build/abstract.tex
+  echo $P"...building abstract$N"
   cat $chapter/text/abstract.md \
   | text-pipeline \
-  >> $body
+  >> $build/abstract.tex
 
-  echo "\\\end{spacing}" >> $body
-
-
-  echo "\\\newpage" >> $body
-  echo "" >> $body
-
+  echo $P"...building text (and interleaving figures)$N"
   aggregate-text $chapter/text/chapters/*.md \
   | mark-inline-figures \
   | text-pipeline \
@@ -71,41 +76,25 @@ for chapter in chapters/*; do
     $chapter/text/includes.yaml \
     --template-dir paper-components/includes \
     --captions $captions \
-    --collect-dir $collect_dir \
-  >> $body
+    --collect-dir $include_dir \
+  > $build/body.tex
 
-  # Copy bibliography and add to same directory
-  cp $chapter/text/references.bib $build/references.bib
-
-  echo "" >> $body
-  echo "\\\begin{spacing}{1}" >> $body
-  echo "\\\bibliographystyle{paper-components/agu-template/agufull08.bst}" >> $body
-  echo "\\\bibliography{${build}/references.bib}" >> $body
-  echo "\\\end{spacing}" >> $body
-  echo "" >> $body
-
-  a=($chapter/text/appendices/*.md(N))
-  if [[ ${#a} ]]; then
-    echo "Processing appendices"
-
-    echo "\\\newpage" >> $body
-    echo '' >> $body
-
-    echo "\\\begin{subappendices}" >> $body
-    echo "" >> $body
-    aggregate-text ${a}  \
+  if [[ ${#appendices} ]]; then
+    echo "...building appendices"
+    aggregate-text ${appendices}  \
     | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
     | mark-inline-figures \
     | text-pipeline \
     | figurator inline \
       $chapter/text/includes.yaml \
-      --template-dir $chapter/paper-components/includes \
+      --template-dir paper-components/includes \
       --captions $captions \
-      --collect-dir $collect_dir \
-    >> $body
-    echo "\\\end{subappendices}" >> $body
+      --collect-dir $include_dir \
+    > $build/appendices.tex
+
   fi
 
+  echo ""
 done
 
 
