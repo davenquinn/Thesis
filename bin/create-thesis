@@ -20,9 +20,9 @@ texfile=build/main.tex
 
 preamble="$build/preamble.tex"
 cp thesis-template/* build
-cp main.tex $texfile
+cp source/main.tex $texfile
 cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
-cat chapters/04-statistics/text/math-defs.tex >> $preamble
+cat chapters/04-orientation-statistics/math-defs.tex >> $preamble
 
 bin/create-sections
 
@@ -31,12 +31,14 @@ run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf
 
 for chapter in chapters/*; do
   name=${chapter:t}
-  bibtex build/$name/body.aux
+  bibtex build/$name/main.aux
 done
 
 for chapter in build/sections/*.aux; do
   bibtex $chapter
 done
+
+bibtex build/Daven-Quinn-thesis-draft.aux
 
 run-latex $texfile build/Daven-Quinn-thesis-draft.pdf
 
