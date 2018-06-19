@@ -65,7 +65,7 @@ composition, and its surface biogeochemical systems [e.g. @DePaolo1976b;
 small-scale geochemical systems have become increasingly well understood [e.g. @Gansecki1998;
 @Bindeman2008], but regional contextualization of these results
 necessarily relies on inference from relatively limited sample sets
-[e.g. @Luffi2009] or, where possible, regional mapping studies [e.g. @Saylor1996; @Dibenedetto2005].
+[e.g. @Luffi2009] or, where possible, regional mapping studies [e.g. @Saylor1995; @Dibenedetto2005].
 
 A similar dynamic is present in Mars science: generalized study of the
 planet's surface is enabled by remote-sensing data [e.g. @Malin2000; @Murchie2007; @McEwen2010],
