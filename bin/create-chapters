@@ -6,18 +6,7 @@
 # chapter. (Note: we assume that the bibliography in each chapter
 # is complete and don't try to add to it ourselves)
 
-PROJECTS=$HOME/Development/
-SYRTIS=$PROJECTS/Syrtis/versioned/Papers
-
 cd $PROJECT_DIR
-chapters=$PROJECT_DIR/chapters
-ln -s $PROJECTS/Xenoliths/versioned/Paper $chapters/02-xenoliths
-ln -s "$SYRTIS/Orientation Statistics" $chapters/04-statistics
-ln -s "$SYRTIS/Syrtis Major" $chapters/05-syrtis
-ln -s "$PROJECTS/Naukluft/versioned/Paper" $chapters/03-naukluft
-
-build="build"
-mkdir -p build
 
 source paper-components/defs.zsh
 
@@ -36,7 +25,7 @@ for chapter in chapters/*; do
   build=build/$name
   includes=$build/includes
   # Appendices
-  appendices=($chapter/text/appendices/*.md(N))
+  appendices=($chapter/appendices/*.md(N))
 
   mkdir -p $build
 
@@ -47,7 +36,12 @@ for chapter in chapters/*; do
     echo "Copying figures and tables from $G$include_dir$N"
     rsync -a --delete $include_dir/ $includes
   else
-    echo "Could not find include directory \e[0;31m$include_dir$N"
+    if [[ $include_dir != null ]]; then
+      echo "\e[0;31mCould not find include directory$N$include_dir"
+    else
+      echo "\e[0;31mNo include directory specified$N"
+    fi
+    echo "   (figures and tables will not print)"
   fi
 
   echo $P"...building template$N"
@@ -57,33 +51,41 @@ for chapter in chapters/*; do
   sed -i 's|\\$build|'"$build"'|' $build/main.tex
 
   echo $P"...copying title block and references$N"
-  cp $chapter/text/title-block.tex $chapter/text/references.bib $build
-
-  echo $P"...building figure captions$N"
-  captions=$build/captions.tex
-  cat $chapter/text/figure-captions.md \
-  | text-pipeline \
-  > $captions
+  cp $chapter/title-block.tex $chapter/references.bib $build
 
   echo $P"...building abstract$N"
-  cat $chapter/text/abstract.md \
+  cat $chapter/abstract.md \
   | text-pipeline \
   >> $build/abstract.tex
 
-  function process-text {
-    aggregate-text $@ \
-    | mark-inline-figures \
-    | text-pipeline \
-    | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
-    | figurator inline \
-      $chapter/text/includes.yaml \
-      --template-dir paper-components/includes \
-      --captions $captions \
-      --collect-dir $include_dir
-  }
+  echo $P"...building figure captions$N"
+  captions=$build/captions.tex
+  cat $chapter/figure-captions.md \
+  | text-pipeline \
+  > $captions
 
-  echo $P"...building text (and interleaving figures)$N"
-  process-text $chapter/text/chapters/*.md > $build/body.tex
+  if [[ -d $include_dir ]]; then
+    function process-text {
+      aggregate-text $@ \
+      | mark-inline-figures \
+      | text-pipeline \
+      | implicit-introduction \
+      | figurator inline \
+        $chapter/includes.yaml \
+        --template-dir paper-components/includes \
+        --captions $captions \
+        --collect-dir $include_dir
+    }
+  else
+    function process-text {
+      aggregate-text $@ \
+      | text-pipeline \
+      | implicit-introduction
+    }
+  fi
+
+  echo $P"...building main text$N"
+  process-text $chapter/chapters/*.md > $build/body.tex
 
   if (( ${#appendices} > 0 )); then
     echo $P"...building appendices"$N

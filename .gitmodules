@@ -1,3 +1,15 @@
 [submodule "paper-components"]
 	path = paper-components
 	url = ../Repositories/paper-components.git
+[submodule "chapters/02-xenoliths"]
+	path = chapters/02-xenoliths
+	url = /Users/Daven/Library/Repositories/xenoliths-text.git
+[submodule "chapters/03-naukluft"]
+	path = chapters/03-naukluft
+	url = /Users/Daven/Library/Repositories/naukluft-text.git
+[submodule "chapters/05-syrtis-major"]
+	path = chapters/05-syrtis-major
+	url = /Users/Daven/Library/Repositories/syrtis-major-text.git
+[submodule "chapters/04-orientation-statistics"]
+	path = chapters/04-orientation-statistics
+	url = /Users/Daven/Library/Repositories/orientation-statistics-text.git
