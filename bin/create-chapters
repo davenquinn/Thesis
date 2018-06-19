@@ -27,6 +27,8 @@ P="\e[0;34m"
 
 # First get chapter text into latex format
 for chapter in chapters/*; do
+
+  # Skip non-directories
   [[ ! -d $chapter ]] && continue
   name=${chapter:t}
   echo "\n\e[1;92m"$name$N
@@ -38,10 +40,11 @@ for chapter in chapters/*; do
 
   mkdir -p $build
 
+  # Get the directory from which included files should be sourced from
   eval include_dir="$(cat chapters/include-directories.json | jq ".[\"$name\"]")"
 
   if [[ -d $include_dir ]]; then
-    echo "Copying figures from $G$include_dir$N"
+    echo "Copying figures and tables from $G$include_dir$N"
     rsync -a --delete $include_dir/ $includes
   else
     echo "Could not find include directory \e[0;31m$include_dir$N"
@@ -49,7 +52,7 @@ for chapter in chapters/*; do
 
   echo $P"...building template$N"
   cp source/chapter-template.tex "$build/main.tex"
-  [[ ${#appendices} ]] && cat source/appendices-shim.tex >> $build/main.tex
+  (( ${#appendices} > 0 )) && cat source/appendices-shim.tex >> $build/main.tex
   # Replace template variables
   sed -i 's|\\$build|'"$build"'|' $build/main.tex
 
@@ -67,31 +70,24 @@ for chapter in chapters/*; do
   | text-pipeline \
   >> $build/abstract.tex
 
-  echo $P"...building text (and interleaving figures)$N"
-  aggregate-text $chapter/text/chapters/*.md \
-  | mark-inline-figures \
-  | text-pipeline \
-  | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
-  | figurator inline \
-    $chapter/text/includes.yaml \
-    --template-dir paper-components/includes \
-    --captions $captions \
-    --collect-dir $include_dir \
-  > $build/body.tex
-
-  if [[ ${#appendices} ]]; then
-    echo "...building appendices"
-    aggregate-text ${appendices}  \
-    | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
+  function process-text {
+    aggregate-text $@ \
     | mark-inline-figures \
     | text-pipeline \
+    | sed -r 's/^\\section\{(Introduction)\}/\\invisiblesection\{\1\}/g' \
     | figurator inline \
       $chapter/text/includes.yaml \
       --template-dir paper-components/includes \
       --captions $captions \
-      --collect-dir $include_dir \
-    > $build/appendices.tex
+      --collect-dir $include_dir
+  }
 
+  echo $P"...building text (and interleaving figures)$N"
+  process-text $chapter/text/chapters/*.md > $build/body.tex
+
+  if (( ${#appendices} > 0 )); then
+    echo $P"...building appendices"$N
+    process-text ${appendices} > $build/appendices.tex
   fi
 
   echo ""
