@@ -8,10 +8,14 @@
 
 cd $PROJECT_DIR
 
+# Use local python modules
+export PYTHONPATH="paper-components/modules:$PYTHONPATH"
+
 source paper-components/defs.zsh
 
 G="\e[32m"
 N="\e[0m"
+R="\e[31m"
 P="\e[0;34m"
 BP="\e[1;94m"
 
@@ -26,12 +30,11 @@ function directory-hash {
 echo $BP"BUILD CHAPTERS"$N
 # First get chapter text into latex format
 for chapter in chapters/*; do
-  name=${chapter:t}
+  name=${chapter:t:r}
   # Skip non-directories
   if [[ ! -d $chapter ]]; then
     # Continue unless markdown
     [[ ${chapter:e} != "md" ]] && continue
-    name=${name:r}
   fi
   echo "\e[1;92m"$name$N
   build=build/$name
@@ -118,12 +121,12 @@ for chapter in chapters/*; do
     process-text $chapter > $build/main.tex
   fi
 
-  # To save time next time
+  # Puts a hash of the current directory there to save time
   echo $_hash > $hashfile
 
 done
 
-echo $BP"BUILD THESIS"$N
+echo "\n"$BP"BUILD THESIS"$N
 texfile=build/main.tex
 preamble="build/preamble.tex"
 cp thesis-template/* build
@@ -134,16 +137,52 @@ step "building template"
 
 step "running latex in draft mode"
 cp $BIBTEX_LIBRARY build/references.bib
-run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-draft.log"
+run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-draft.log" 2>&1
 
-step "running bibtex"
+function filter-bib {
+  bibfile=$2
+  auxfile=$1
+  if [[ ! -v BIBTEX_LIBRARY ]]; then
+    echo "$R   \$BIBTEX_LIBRARY not set. Assuming that $bibfile contains correct references.$N"
+    return
+  fi
+  res=$(bib-filter --clean \
+    --aux $auxfile $BIBTEX_LIBRARY $bibfile | wc -w)
+  echo "$R   $res references written to $bibfile"$N
+}
+
+step "filtering bibliography"
+# Combined aux file for unmanaged chapters
+combined_auxfile=build/combined.aux
+touch $combined_auxfile
 for chapter in chapters/*; do
-  name=${chapter:t:r}
   [[ -f $chapter ]] && [[ ${chapter:e} != 'md' ]] && continue
-  bibtex build/$name/main.aux
+  name=${chapter:t:r}
+  auxfile=build/$name/main.aux
+  if [[ -f $chapter ]]; then
+    echo $auxfile >> $combined_auxfile
+    continue
+  fi
+
+  # Do the following for a chapter that maintains its own internal reference list
+  step "...$name"
+  bibfile=$chapter/references.bib
+  [[ -f $bibfile ]] && filter-bib $auxfile $bibfile
 done
 
-bibtex build/Daven-Quinn-thesis-draft.aux
+if [[ -n $combined_auxfile ]]; then
+  step "...all other chapters"
+  filter-bib $combined_auxfile chapters/references.bib
+  cp chapters/references.bib build/references.bib
+fi
+rm -f $combined_auxfile
 
-run-latex $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-final.log"
+step "running bibtex for each chapter"
+for auxfile in build/*/main.aux; do
+  echo $auxfile
+  bibtex $auxfile > /dev/null 2>&1
+done
+
+
+run-latex $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-final.log" 2>&1
 
