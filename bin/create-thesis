@@ -22,9 +22,8 @@ preamble="$build/preamble.tex"
 cp thesis-template/* build
 cp source/main.tex $texfile
 cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
-cat chapters/04-orientation-statistics/math-defs.tex >> $preamble
 
-bin/create-sections
+bin/create-chapters
 
 cp $BIBTEX_LIBRARY build/references.bib
 run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf

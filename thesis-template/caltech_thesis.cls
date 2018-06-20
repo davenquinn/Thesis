@@ -60,10 +60,9 @@
 }               %% End of \makecopyright
 
 \renewcommand{\maketitle}[1][]{%
-  \renewcommand\Authfont{\Gotham\Large\bfseries}
- \begin{titlingpage}
+\begin{titlingpage}
      \vspace*{\stretch{2}}
-
+  \renewcommand\Authfont{\Gotham\Large\bfseries}
   \Gotham
    \OnehalfSpacing
    \let\footnotesize\small \let\footnoterule\relax \setcounter{page}{1}
@@ -89,9 +88,8 @@
    \end{flushleft}
    \vspace*{.5in}
    \pagenumbering{}
-
- \end{titlingpage}
-  \renewcommand\Authfont{}
+\end{titlingpage}
+\renewcommand\Authfont{}
 \newpage
  \pagenumbering{roman}
  \setcounter{page}{2}

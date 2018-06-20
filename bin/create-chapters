@@ -13,18 +13,27 @@ source paper-components/defs.zsh
 G="\e[32m"
 N="\e[0m"
 P="\e[0;34m"
+BP="\e[1;94m"
+
+function step {
+  echo "$P...$@"$N
+}
 
 function directory-hash {
   gfind $@ -maxdepth 2 -type d -printf "%p %TY-%Tm-%Td %TH:%TM:%TS %Tz" | md5sum
 }
 
+echo $BP"BUILD CHAPTERS"$N
 # First get chapter text into latex format
 for chapter in chapters/*; do
-
-  # Skip non-directories
-  [[ ! -d $chapter ]] && continue
   name=${chapter:t}
-  echo "\n\e[1;92m"$name$N
+  # Skip non-directories
+  if [[ ! -d $chapter ]]; then
+    # Continue unless markdown
+    [[ ${chapter:e} != "md" ]] && continue
+    name=${name:r}
+  fi
+  echo "\e[1;92m"$name$N
   build=build/$name
   includes=$build/includes
   captions=$build/captions.tex
@@ -77,37 +86,64 @@ for chapter in chapters/*; do
     echo "   (figures and tables will not print)"
   fi
 
-  echo $P"...building template$N"
-  cp source/chapter-template.tex "$build/main.tex"
-  (( ${#appendices} > 0 )) && cat source/appendices-shim.tex >> $build/main.tex
-  # Replace template variables
-  sed -i 's|\\$build|'"$build"'|' $build/main.tex
+  if [[ -d $chapter ]]; then
+    step "building template"
+    cp source/chapter-template.tex "$build/main.tex"
+    (( ${#appendices} > 0 )) && cat source/appendices-shim.tex >> $build/main.tex
+    # Replace template variables
+    sed -i 's|\\$build|'"$build"'|' $build/main.tex
 
-  echo $P"...copying title block and references$N"
-  cp $chapter/title-block.tex $chapter/references.bib $build
+    step "copying title block and references"
+    cp $chapter/title-block.tex $chapter/references.bib $build
 
-  echo $P"...building abstract$N"
-  cat $chapter/abstract.md \
-  | text-pipeline \
-  > $build/abstract.tex
+    step "building abstract"
+    cat $chapter/abstract.md \
+    | text-pipeline \
+    > $build/abstract.tex
 
-  echo $P"...building figure captions$N"
-  cat $chapter/figure-captions.md \
-  | text-pipeline \
-  > $captions
+    step "building figure captions"
+    cat $chapter/figure-captions.md \
+    | text-pipeline \
+    > $captions
 
-  echo $P"...building main text$N"
-  process-text $chapter/chapters/*.md > $build/body.tex
+    step "building main text"
+    process-text $chapter/chapters/*.md > $build/body.tex
 
-  if (( ${#appendices} > 0 )); then
-    echo $P"...building appendices"$N
-    process-text ${appendices} > $build/appendices.tex
+    if (( ${#appendices} > 0 )); then
+      step "building appendices"
+      process-text ${appendices} > $build/appendices.tex
+    fi
+  else
+    step "building main text"
+    process-text $chapter > $build/main.tex
   fi
 
   # To save time next time
   echo $_hash > $hashfile
 
-  echo ""
 done
 
+echo $BP"BUILD THESIS"$N
+texfile=build/main.tex
+preamble="build/preamble.tex"
+cp thesis-template/* build
+cp source/main.tex $texfile
+cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
+step "building template"
+
+
+step "running latex in draft mode"
+cp $BIBTEX_LIBRARY build/references.bib
+run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-draft.log"
+
+step "running bibtex"
+for chapter in chapters/*; do
+  name=${chapter:t:r}
+  [[ -f $chapter ]] && [[ ${chapter:e} != 'md' ]] && continue
+  bibtex build/$name/main.aux
+done
+
+bibtex build/Daven-Quinn-thesis-draft.aux
+
+run-latex $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-final.log"
 

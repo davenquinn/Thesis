@@ -1,6 +1,8 @@
 \documentclass{caltech_thesis}
 \input{build/preamble.tex}
+\input{chapters/04-orientation-statistics/math-defs.tex}
 \usepackage[sectionbib]{chapterbib}
+\usepackage[all]{nowidow}
 
 \title{Regional structural geology\\ of Earth and Mars}
 \author{Daven P. Quinn}
@@ -17,7 +19,7 @@
 %% IMPORTANT: Select ONE of the rights statement below.
 \rightsstatement{All rights reserved}
 
-\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\Large\thechapter}{2em}{}
+\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\Large\thechapter}{0em}{}
 
 \titleformat{\section}{\Gotham\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\Gotham\normalsize\bfseries}{\thesubsection}{3pt}{}
@@ -34,23 +36,20 @@
 
 \begin{spacing}{1.4}
 
-\include{sections/acknowledgements}
-
-\include{sections/abstract}
+\include{acknowledgements/main}
+\include{abstract/main}
 
 \tableofcontents
 \listof{plate}{\Large{Plates}}
 \listoftables
 \listoffigures
 
-\include{sections/introduction}
-
+\include{01-introduction/main}
 \include{02-xenoliths/main}
 \include{03-naukluft/main}
-\include{04-statistics/main}
-\include{05-syrtis/main}
-
-\include{sections/conclusion}
+\include{04-orientation-statistics/main}
+\include{05-syrtis-major/main}
+\include{06-conclusion/main}
 
 \end{spacing}
 
