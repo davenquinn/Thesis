@@ -18,6 +18,7 @@ N="\e[0m"
 R="\e[31m"
 P="\e[0;34m"
 BP="\e[1;94m"
+BG="\e[1;92m"
 
 function step {
   echo "$P...$@"$N
@@ -36,7 +37,7 @@ for chapter in chapters/*; do
     # Continue unless markdown
     [[ ${chapter:e} != "md" ]] && continue
   fi
-  echo "\e[1;92m"$name$N
+  echo "$BG"$name$N
   build=build/$name
   includes=$build/includes
   captions=$build/captions.tex
@@ -136,12 +137,19 @@ step "building template"
 
 
 step "running latex in draft mode"
-cp $BIBTEX_LIBRARY build/references.bib
 run-latex-draft $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-draft.log" 2>&1
 
 function filter-bib {
   bibfile=$2
   auxfile=$1
+  hashfile="${auxfile}.hash"
+  _hash=$(cat $auxfile | md5sum)
+  if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
+    echo "   No changes"
+    return
+  fi
+  echo $_hash > $hashfile
+
   if [[ ! -v BIBTEX_LIBRARY ]]; then
     echo "$R   \$BIBTEX_LIBRARY not set. Assuming that $bibfile contains correct references.$N"
     return
@@ -165,24 +173,32 @@ for chapter in chapters/*; do
   fi
 
   # Do the following for a chapter that maintains its own internal reference list
-  step "...$name"
+  echo $BG"   $name"$N
   bibfile=$chapter/references.bib
   [[ -f $bibfile ]] && filter-bib $auxfile $bibfile
 done
 
 if [[ -n $combined_auxfile ]]; then
-  step "...all other chapters"
+  echo $BG"   combined remaining chapters"$N
   filter-bib $combined_auxfile chapters/references.bib
   cp chapters/references.bib build/references.bib
 fi
 rm -f $combined_auxfile
 
-step "running bibtex for each chapter"
+step "running bibtex"
 for auxfile in build/*/main.aux; do
-  echo $auxfile
+  name=${auxfile:h:t}
+  hashfile="${auxfile}.hash"
+  _hash=$(cat $auxfile | md5sum)
+  if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
+    echo "   $BG"$name"$N (no changes)"
+    continue
+  fi
+  echo $BG"   $name"$N
   bibtex $auxfile > /dev/null 2>&1
+  echo $_hash > $hashfile
 done
 
-
+step "creating pdf"
 run-latex $texfile build/Daven-Quinn-thesis-draft.pdf > "build/latex-final.log" 2>&1
 
