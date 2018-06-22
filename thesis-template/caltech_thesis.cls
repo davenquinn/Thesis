@@ -4,12 +4,12 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
-\LoadClass[letterpaper,12pt]{report}
+\LoadClass[letterpaper,openleft,twoside,12pt]{report}
 
 \RequirePackage{etoolbox}
 
 % Overleaf 28 Jan: Page geometry
-\RequirePackage[paper=letterpaper, margin=1.25in, nohead, pdftex, top=1in,bottom=1in,left=1.5in,right=1.5in,marginparwidth=1.25in]{geometry}
+\RequirePackage[paper=letterpaper, margin=1in, inner=1.5in, nohead, pdftex]{geometry}
 
 %
 % Define spacing for use on titlepage

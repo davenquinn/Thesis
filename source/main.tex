@@ -19,15 +19,21 @@
 %% IMPORTANT: Select ONE of the rights statement below.
 \rightsstatement{All rights reserved}
 
-\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\Large\thechapter}{0em}{}
+\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\Large\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
 
 \titleformat{\section}{\Gotham\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\Gotham\normalsize\bfseries}{\thesubsection}{3pt}{}
 \titleformat{\subsubsection}[runin]{\Gotham\small\bfseries}{\thesubsubsection}{3pt}{}[~~~~]
 
 \renewcommand{\contentsname}{\Gotham{\bfseries{Contents}}}
-\renewcommand{\listfigurename}{\Gotham\Large{Figures}}
-\renewcommand{\listtablename}{\Gotham\Large{Tables}}
+\renewcommand{\listfigurename}{\Gotham\large{Figures}}
+\renewcommand{\listtablename}{\Gotham\large{Tables}}
+
+\renewcommand{\cftchapfont}{\mainfont\normalsize\bfseries}
+\renewcommand{\cftsecfont}{\mainfont\normalsize}
+\renewcommand{\cftsubsecfont}{\mainfont\normalsize}
+
 %\titleformat{\chapter}{\Gotham\Large\bfseries}{\Gotham\LARGE\thechapter}{}{2ex}
 
 \begin{document}
@@ -37,12 +43,17 @@
 \begin{spacing}{1.4}
 
 \include{acknowledgements/main}
+\cleardoublepage
 \include{abstract/main}
-
+\cleardoublepage
+{
+  \let\clearpage{\vspace{20pt}}
 \tableofcontents
-\listof{plate}{\Large{Plates}}
+\listof{plate}{\large{Plates}}
 \listoftables
 \listoffigures
+}
+\cleardoublepage
 
 \include{01-introduction/main}
 \include{02-xenoliths/main}

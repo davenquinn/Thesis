@@ -10,64 +10,84 @@ the past. Their properties capture information about their formation
 environment, and these vignettes can be used to test the applicability
 of mechanistic and theoretical frameworks for global change.
 
-There are two major aspects of this approach that must be unified.
-First, detailed observations of key features of the geologic system must
-be isolated and probed with the appropriate techniques for developing a
-detailed understanding of individual components. Second,
-observations must be contextualized with their surroundings,
-allowing disparate environmental markers to be integrated into a
+Typically, geologic systems are understood by combining two distinct
+scientific approaches.
+First, key features are isolated
+and probed with appropriate descriptive and analytical techniques,
+developing a detailed understanding of individual components.
+Second, these observations are contextualized with their surroundings,
+integrating disparate environmental markers into a
 sequence that can illuminate global change.
+New areas of study opened by technological advances
+often lack techniques to build context and bridge local and
+global-scale insights. This thesis explores this gap in the
+context of Mars science and the deep lithosphere of Earth.
 
-# Bridging scales of planetary observation
+# Observing geological systems at multiple scales
 
 On Earth, operating over a range of scales has been fundamental
-to geology since its inception as a branch of science. Since their
-earliest scientific inspection, rocks have been investigated
-based on microscopic features, such as their fossil content,
-at human scale, using their outcrop geology and local structural
-geometry, and at regional scale with structural mapping and correlation.
+to geology since its inception as a branch of science. The earliest
+scientific breakthroughs in geology were based on
+based on microscopic features (the fossil content of rocks),
+local relationships (outcrop geology and local structural
+geometry), and regional correlations (structural mapping).
 Global summary of regionally-observed trends has enabled
 the systematization of Earth history and understanding of its
 surface environment through time.
 
-The methodology employed in small-scale studies has changed fundamentally over
+The methodology employed in targeted analytical studies has changed fundamentally over
 time, with the development of imaging and geochemical techniques that
-increase the amount of information that can be gleaned from a single
+increase the amount and richness of information available from a single
 sample. The techniques employed in global studies have dramatically
 shifted as well, with satellite imaging and modeling approaches
 fundamentally altering how problems are investigated, providing
-more powerful types of information that cannot be gained in other ways.
+powerful new types of information that are inseparable from their
+technical underpinnings.
 
-Our understanding of regional-scale geologic
-problems on Earth has been limited primarily by the ability to
-synthesize abundant data. Thus, regional geologic systems are
-still fundamentally characterized with geological mapping:
-technical development has served mostly to
-increase its efficiency and encourage revision based on new new
-interpretive frameworks [e.g @Atwater1970; @Liu2010].
+Technology has not had a similar effect on local and regional geology.
+At the surface of the Earth, geological information is easily and
+directly sensible by humans, and our understanding of regional-scale geologic
+problems on Earth is limited primarily by the ability to
+synthesize abundant data.
+It is no surprise, then, that the tools to understand regional geologic
+systems --- anchored by geologic mapping --- are still fundamentally the
+same.
 
-Technology-driven measurements
-in adjacent fields have motivated increasingly targeted
-assessment of regional structural relationships, rather than replacing
-the technique of regional mapping. A key case is the recent debate over the age of the Grand Canyon,
-which grapples with the reconciliation of geochemical ages constraining canyon incision
-with geologic cross-cutting relationships [e.g. @Wernicke2011;
-@Flowers2012; @Lucchitta2013]. The scale mismatch of localized
-geochemical data with regional and global interpretive frameworks
-means that detailed regional mapping studies retain their importance.
+Rather than replacing the technique of regional mapping,
+technology-driven progress in adjacent fields has encouraged
+re-interpretation based on new theoretical frameworks [e.g @Atwater1970;
+@Liu2010].
+A key case is the recent debate over the age of the Grand Canyon:
+geochemical ages constraining canyon incision
+must be reconciled with geologic cross-cutting relationships to
+understand their true meaning [e.g. @Wernicke2011;
+@Flowers2012; @Lucchitta2013]. The scale mismatch between localized
+geochemical data and regional geologic systems means that
+detailed regional mapping retains its importance to contextualize new
+analytical findings.
 
-New branches of science that have been enabled by technical advances
-often find it hard to replicate this intermediate-scale component. For
-instance, global averaging by geochemical proxies is extremely powerful
-for understanding the large-scale evolution of the Earth, its
+Technological advances in the geosciences have opened once-inaccessible systems to
+investigation. However, new techniques often find it hard to replicate
+the intermediate-scale context offered by geologic mapping.
+In geochemistry, for instance, global averaging provides powerful proxies
+for understanding the evolution of the Earth, its
 composition, and its surface biogeochemical systems [e.g. @DePaolo1976b;
 @Paytan2004; @Rohrbach2007; @Workman2005; @Halverson2010], and
 small-scale geochemical systems have become increasingly well understood [e.g. @Gansecki1998;
-@Bindeman2008], but regional contextualization of these results
-necessarily relies on inference from relatively limited sample sets
-[e.g. @Luffi2009] or, where possible, regional mapping studies [e.g. @Saylor1995; @Dibenedetto2005].
+@Bindeman2008], However, regional contextualization of geochemical results is still
+dependent on mapping studies: examples include the basin-scale
+stratigraphy of the Nama Group required to contextualize
+Cambrian-boundary isotopic shifts in seawater composition [e.g. @Saylor1995;
+@Dibenedetto2005] and the identification of a "Sr-0.706" line on the
+west coast of North America and its interpretation of the boundary
+signature of the cratonic core [e.g. @Kistler1973; @Farmer1983].
+Where the target is not accessible at the Earth's
+surface, such as in studies of deep continental structure,
+relationships must be inferred from relatively limited sample
+sets [e.g. @Luffi2009].
 
-A similar dynamic is present in Mars science: generalized study of the
+A similar lack of regional context afflicts Mars science.
+At global scale, generalized study of the
 planet's surface is enabled by remote-sensing data [e.g. @Malin2000; @Murchie2007; @McEwen2010],
 and modeling can drive understanding of the global environment through time
 [e.g. @Wordsworth2015; @Soucek2015]. Meanwhile,
@@ -76,14 +96,21 @@ or Mars meteorites, as
 permitted by sampling [e.g. @Rankenburg2006; @Agee2014]. Cases where
 abundant data is available, such as landed rover campaigns, have made
 the most progress in understanding the evolution of integrated geologic
-systems [e.g. @Grotzinger2005Burns; @Arvidson2014; @Grotzinger2015], but there remains a major scale
-gap, both in the lack of data at scales intermediate between orbital and rover imagery [@Stack2015] and in
-interpretive space --- inferring planetary evolution from
+systems [e.g. @Grotzinger2005Burns; @Arvidson2014; @Grotzinger2015].
+However there remains a major lack of both spatial and temporal context
+for localized observations.
+Rover-scale observations cover tiny areas of the planet and sometimes
+difficult to generalize with orbital observations [@Stack2015].
+Further, inferring planetary evolution from
 rover campaigns is difficult due to the lack of time constraints
-on geologic snapshots characterized during landed missions. Attempts to bridge this conceptual divide
-necessarily involve modeling [@Tosca2006; @Andrews-Hanna2007] or detailed geologic mapping [@Lichtenberg2010].
+on geologic snapshots characterized during landed missions.
+Attempts to bridge this conceptual divide
+necessarily involve modeling [@Tosca2006; @Andrews-Hanna2007]
+or detailed geologic mapping [@Lichtenberg2010].
+However, both of these approaches must be undertaken with much sparser datasets
+than are available on Earth.
 
-# Differently scaled explorations of continental margins
+# Continental margins as archives of past environment
 
 This thesis consists of several projects that explore different
 parts of this conceptual space and try to bridge the scale gap
@@ -104,7 +131,7 @@ terrane of coastal central California.
 This study uses investigation of mantle-sourced xenolith samples
 to estimate the structure
 and origin of a mantle domain beneath the Coast Ranges, linking
-the two scales using both a review of geologic context and modeling.
+the two scales using both a review of geologic context and heat-flow modeling.
 
 The latest Neoproterozoic Eon and its boundary with the Cambrian Period is
 a time of rapid global change culminating in origin of animal life

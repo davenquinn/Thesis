@@ -6,6 +6,26 @@
 # chapter. (Note: we assume that the bibliography in each chapter
 # is complete and don't try to add to it ourselves)
 
+# Accept argument --force to force rebuild
+
+[[ $1 != '--force' ]]; force=$?
+(( $force )) && shift && echo "Forcing rebuild due to \`--force\` flag"
+
+#[[ $1 == '--no-rebuild-bib']] && echo "No rebuild bib"
+
+function check-changes {
+  # Check for changes between a hash file and a hash
+  [[ $1 != '--write' ]]; _write=$?
+  (($_write)) && shift
+  hashfile=$1
+  _hash=$2
+  [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]] && (( !$force ))
+  output=$?
+  # Write hash to file for further changes
+  (($_write)) && echo $_hash > $hashfile
+  return $output
+}
+
 cd $PROJECT_DIR
 
 # Use local python modules
@@ -71,9 +91,10 @@ for chapter in chapters/*; do
       | text-pipeline \
       | implicit-introduction
     }
-    _hash=$(directory-hash $chapter)
+    _hash=$(cat $chapter | md5sum)
   fi
-  if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
+
+  if $(check-changes --write $hashfile $_hash) ; then
     echo "No changes"
     continue
   fi
@@ -94,11 +115,14 @@ for chapter in chapters/*; do
     step "building template"
     cp source/chapter-template.tex "$build/main.tex"
     (( ${#appendices} > 0 )) && cat source/appendices-shim.tex >> $build/main.tex
+    echo "\\cleardoublepage" >> $build/main.tex
     # Replace template variables
     sed -i 's|\\$build|'"$build"'|' $build/main.tex
 
     step "copying title block and references"
     cp $chapter/title-block.tex $chapter/references.bib $build
+
+    sed -i 's/, Pasadena, California, USA//g' $build/title-block.tex
 
     step "building abstract"
     cat $chapter/abstract.md \
@@ -121,10 +145,6 @@ for chapter in chapters/*; do
     step "building main text"
     process-text $chapter > $build/main.tex
   fi
-
-  # Puts a hash of the current directory there to save time
-  echo $_hash > $hashfile
-
 done
 
 echo "\n"$BP"BUILD THESIS"$N
@@ -132,7 +152,7 @@ texfile=build/main.tex
 preamble="build/preamble.tex"
 cp thesis-template/* build
 cp source/main.tex $texfile
-cat "paper-components/defs/preamble-thesis"/*.tex > $preamble
+cat "source/preamble"/*.tex > $preamble
 step "building template"
 
 
@@ -144,11 +164,10 @@ function filter-bib {
   auxfile=$1
   hashfile="${auxfile}.hash"
   _hash=$(cat $auxfile | md5sum)
-  if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
+  if $(check-changes $hashfile $_hash); then
     echo "   No changes"
     return
   fi
-  echo $_hash > $hashfile
 
   if [[ ! -v BIBTEX_LIBRARY ]]; then
     echo "$R   \$BIBTEX_LIBRARY not set. Assuming that $bibfile contains correct references.$N"
@@ -168,7 +187,7 @@ for chapter in chapters/*; do
   name=${chapter:t:r}
   auxfile=build/$name/main.aux
   if [[ -f $chapter ]]; then
-    echo $auxfile >> $combined_auxfile
+    cat $auxfile >> $combined_auxfile
     continue
   fi
 
@@ -190,13 +209,12 @@ for auxfile in build/*/main.aux; do
   name=${auxfile:h:t}
   hashfile="${auxfile}.hash"
   _hash=$(cat $auxfile | md5sum)
-  if [[ -f "$hashfile" ]] && [[ $(cat $hashfile) == $_hash ]]; then
+  if $(check-changes --write $hashfile $_hash); then
     echo "   $BG"$name"$N (no changes)"
     continue
   fi
   echo $BG"   $name"$N
   bibtex $auxfile > /dev/null 2>&1
-  echo $_hash > $hashfile
 done
 
 step "creating pdf"
